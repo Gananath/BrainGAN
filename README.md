@@ -1,5 +1,5 @@
 # Multi-Task
-Multi Task Learning Experiments with Neural Networks
+Multi Task and Multi Domain Learning Experiments with Neural Networks
 Read from here https://gananath.github.io/multi_task.html
 
 # Requirments

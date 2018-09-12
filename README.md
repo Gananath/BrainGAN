@@ -7,6 +7,7 @@ Read more from here https://gananath.github.io/multi_task.html
 - Python 2
 - Keras
 - TensorFlow
+- scikit-image
 - Matplotlib
 - Numpy
 - Pandas

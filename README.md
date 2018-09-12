@@ -23,3 +23,5 @@ Read more from here https://gananath.github.io/multi_task.html
   howpublished = {\url{https://github.com/Gananath/Multi-Task}}
 }
 ```
+**Curent Best after 3000 epochs of training**
+![current_best](https://github.com/Gananath/gananath.github.io/blob/master/images/new_multi_pred.jpg)

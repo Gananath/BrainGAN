@@ -196,7 +196,7 @@ for epoch in range(epochs):
         noise =  np.random.normal(0, 1, (4, latent_size))
         tasks =  np.zeros((4,1))
         preds = G.predict([noise,tasks])
-        preds= preds[:,0:28,0:28]
+        preds= preds[:,0:116,0:28]
         plot_mnist(preds)
         print("Predicted Sequence")
         tasks =  np.ones((4,1))

@@ -10,9 +10,15 @@ from keras.callbacks import ModelCheckpoint
 from keras.datasets import mnist
 from keras.utils import plot_model
 import matplotlib.pyplot as plt
-
+from skimage.transform import resize
 import keras.backend as K
 
+def mnist_resize(X,w=116,h=116):
+    new_img=[]
+    for i in X:
+        img = resize(i, (w,h), anti_aliasing=True)
+        new_img.append(img)
+    return np.array(new_img)
 
 def wasserstein_loss(y_true, y_pred):
     return K.mean(y_true * y_pred)

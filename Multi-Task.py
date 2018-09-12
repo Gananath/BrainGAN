@@ -4,7 +4,6 @@ np.random.seed(2018)
 from keras.datasets import mnist
 
 
-
 def Gan(lr=0.00001):
     D.trainable=False
     GAN=Model(input=G.input, output=D(G.output))
@@ -16,10 +15,11 @@ def Gan(lr=0.00001):
     print ("input_shape"+ str(GAN.input_shape)+"\noutput_shape"+ str(GAN.output_shape))
     return GAN,D
 
+
 BATCH_SIZE = 32
 HALF_BATCH = BATCH_SIZE / 2
 CLIP = 0.01
-epochs = 100000
+epochs = 1#100000
 n_critic = 5
 latent_size=2
 
@@ -75,6 +75,12 @@ print("Shape\n Y={0}".format( y_dash.shape))
 X_test=X_test.astype('float32') / 255.
 X_test=X_test[0:500]
 del _
+
+##############ReSizing Images if needed)#########
+X_test=mnist_resize(X_test,116,28)
+
+
+    
 #Padding with zeros
 r=y_dash.shape[1]-X_test.shape[1]
 c=y_dash.shape[2]-X_test.shape[2]

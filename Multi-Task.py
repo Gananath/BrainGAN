@@ -19,7 +19,7 @@ def Gan(lr=0.00001):
 BATCH_SIZE = 32
 HALF_BATCH = BATCH_SIZE / 2
 CLIP = 0.01
-epochs = 1#100000
+epochs = 100000
 n_critic = 5
 latent_size=2
 

@@ -14,7 +14,7 @@ Read from here https://gananath.github.io/multi_task.html
 ```
 @misc{gananath2018,
   author = {Gananath, R.},
-  title = {MultiTask},
+  title = {Multi-Task},
   year = {2018},
   publisher = {GitHub},
   journal = {GitHub repository},

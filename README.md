@@ -10,7 +10,7 @@ Read from here https://gananath.github.io/multi_task.html
 - Numpy
 - Pandas
 
-# Ciation
+# Citation
 ```
 @misc{gananath2018,
   author = {Gananath, R.},

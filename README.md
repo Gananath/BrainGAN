@@ -9,3 +9,15 @@ Read from here https://gananath.github.io/multi_task.html
 - Matplotlib
 - Numpy
 - Pandas
+
+# Ciation
+```
+@misc{gananath2018,
+  author = {Gananath, R.},
+  title = {MultiTask},
+  year = {2018},
+  publisher = {GitHub},
+  journal = {GitHub repository},
+  howpublished = {\url{https://github.com/Gananath/Multi-Task}}
+}
+```

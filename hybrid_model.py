@@ -26,7 +26,7 @@ def Generator(y_dash,lr=0.00001,latent_size=2,dropout=0.5):
     #hybrid CNN2D + CNN1D
     y_dash=0    
     g_inputs = (Input(shape=(latent_size,), dtype='float32'))
-    bin_switch = (Input(shape=(1,), dtype='float32'))
+    bin_switch = (Input(shape=(2,), dtype='float32'))
     x=concatenate([g_inputs,bin_switch])
     x= Dense(128*7*7 , activation="relu")(x)
     x= LeakyReLU(0.2)(x)    
@@ -55,7 +55,7 @@ def Discriminator(y_dash,dropout=0.5,lr=0.00001):
     #hybrid CNN2D + CNN1D
     y_dash=0
     d_inputs = Input((116, 28))
-    bin_switch = (Input(shape=(1,), dtype='float32'))
+    bin_switch = (Input(shape=(2,), dtype='float32'))
     x= Conv1D(input_shape=(116, 28),nb_filter=25, filter_length=4,border_mode='same',activation='relu')(d_inputs)
     x= Reshape((1,116,25))(x)
     x= LeakyReLU(0.2)(x)
@@ -68,12 +68,13 @@ def Discriminator(y_dash,dropout=0.5,lr=0.00001):
     x= Dropout(dropout)(x)
     x= Dense(10)(x)
     x1= Dense(1,activation='linear',name='fakefind')(x)
-    x2= Dense(1,activation='softmax',name='bin_switch')(x)    
+    x2= Dense(2,activation='softmax',name='bin_switch')(x)    
     model = Model(input=d_inputs, output=[x1,x2])
     print("CONV2D+CONV1D")
     print ("input_shape"+ str(model.input_shape)+"\noutput_shape"+ str(model.output_shape))
     return model
 
-Discriminator(1)
 Generator(1)
+Discriminator(1)
+
 

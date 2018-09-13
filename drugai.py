@@ -102,7 +102,7 @@ def smiles_output(s):
 def Generator(y_dash,lr=0.00001,latent_size=2,dropout=0.4):
     dropout=dropout
     g_inputs = (Input(shape=(latent_size,), dtype='float32'))
-    bin_switch = (Input(shape=(1,), dtype='float32'))
+    bin_switch = (Input(shape=(2,), dtype='float32'))
 
     #x= Dense(256, activation="relu", input_dim=latent_size*10)(x)
     #(None, )
@@ -127,7 +127,7 @@ def Generator(y_dash,lr=0.00001,latent_size=2,dropout=0.4):
     x= Dropout(dropout)(x)
     #(None, )
     x= Conv1D(y_dash.shape[2] / 1, kernel_size=4, padding="same")(x)
-    x= Activation("softmax")(x)
+    x= Activation("sigmoid")(x)
     
     opt = Adam(lr, beta_1=0.5, beta_2=0.9)
     model=Model([g_inputs, bin_switch], x)
@@ -159,7 +159,7 @@ def Discriminator(y_dash,dropout=0.4,lr=0.00001):
     x= LeakyReLU()(x)
     x= Dropout(dropout)(x)
     x1= Dense(1,activation='linear',name='fakefind')(x)
-    x2= Dense(1,activation='softmax',name='bin_switch')(x)    
+    x2= Dense(2,activation='softmax',name='bin_switch')(x)    
     model = Model(input=d_inputs, output=[x1,x2])
     #opt = Adam(lr, beta_1=0.5, beta_2=0.9)
     

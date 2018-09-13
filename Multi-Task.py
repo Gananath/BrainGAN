@@ -116,7 +116,9 @@ for epoch in range(epochs):
         # noise = np.random.normal(0, 1, (BATCH_SIZE, 100))
         noise =  np.random.normal(0, 1, (BATCH_SIZE, latent_size))
         #task
-        tasks= np.zeros((BATCH_SIZE,1))
+        tasks = np.zeros((BATCH_SIZE,2))
+        tasks[:,0]=1        
+       # tasks= np.zeros((BATCH_SIZE,1))
         # Generate a half batch of new images
         gen_imgs= G.predict([noise,tasks])
 
@@ -136,7 +138,9 @@ for epoch in range(epochs):
         # ---------------------
 
         noise = np.random.normal(0, 1, (BATCH_SIZE, 2))
-        tasks= np.zeros((BATCH_SIZE,1))
+        tasks = np.zeros((BATCH_SIZE,2))
+        tasks[:,0]=1  
+        #tasks= np.zeros((BATCH_SIZE,1))
         # Train the generator
         g_loss = GAN.train_on_batch([noise,tasks], [valid,tasks])  # linear activation
 
@@ -156,7 +160,9 @@ for epoch in range(epochs):
         # noise = np.random.normal(0, 1, (BATCH_SIZE, 100))
         noise =  np.random.normal(0, 1, (BATCH_SIZE, latent_size))
         #task
-        tasks= np.ones((BATCH_SIZE,1))
+        tasks = np.zeros((BATCH_SIZE,2))
+        tasks[:,1]=1  
+        #tasks= np.ones((BATCH_SIZE,1))
         # Generate a half batch of new sequence
         gen_imgs = G.predict([noise,tasks])
 
@@ -176,7 +182,9 @@ for epoch in range(epochs):
         # ---------------------
 
         noise = np.random.normal(0, 1, (BATCH_SIZE, 2))
-        tasks= np.ones((BATCH_SIZE,1))
+        tasks = np.zeros((BATCH_SIZE,2))
+        tasks[:,1]=1  
+        #tasks= np.ones((BATCH_SIZE,1))
         # Train the generator
         g_loss = GAN.train_on_batch([noise,tasks], [valid,tasks])  # linear activation
         
@@ -194,12 +202,16 @@ for epoch in range(epochs):
         #Ghash.load_weights('Gen1.h5')
         print("Predicted Images")
         noise =  np.random.normal(0, 1, (4, latent_size))
-        tasks =  np.zeros((4,1))
+        tasks = np.zeros((4,2))
+        tasks[:,0]=1 
+        #tasks =  np.zeros((4,1))
         preds = G.predict([noise,tasks])
         preds= preds[:,0:116,0:28]
         plot_mnist(preds)
         print("Predicted Sequence")
-        tasks =  np.ones((4,1))
+        tasks = np.zeros((4,2))
+        tasks[:,1]=1 
+        #tasks =  np.ones((4,1))
         preds = G.predict([noise,tasks])
         y_pred = prediction(preds)
         y_pred = seq_txt(y_pred, idx_char)

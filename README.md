@@ -1,7 +1,7 @@
 # Multi-Task
 Multi Task and Multi Domain Learning Experiments with Neural Networks
 
-# Abstract
+# Hypothesis
 
 > Neural networks are universal function approximators. In neural network parameter space there can exists a subset of region where parameters for predicting different multi task problem can also exists simultaneously. In a deep neural network if θ<sub>i</sub> represents the parameter space for image generation or classification and θ<sub>s</sub> for sequence. Then there exists θ<sub>is</sub> where both parameters of sequence and image classification or generation can occur together.Used infoGAN's architecture but it should easily work with other types of conditional GAN's. The difference is in "conditional"-GAN we pass noise Z and class C in the generator inputs (Z, C) whereas in my experiment instead of class its tasks T (Z, T). That said theoratically we can also build a model with class for specific tasks by passing inputs as (Z, T, C).
 

@@ -13,7 +13,7 @@ def Gan(lr=0.001):
     
     D.trainable=False
     D.compile(loss=[wasserstein_loss,'categorical_crossentropy'], optimizer=opt)
-    G.compile(optimizer=opt, loss='binary_crossentropy', metrics=['accuracy'])
+    G.compile(optimizer=opt, loss='mse', metrics=['accuracy'])
    
     print ("input_shape"+ str(GAN.input_shape)+"\noutput_shape"+ str(GAN.output_shape))
     return GAN,D,G

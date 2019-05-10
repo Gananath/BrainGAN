@@ -4,7 +4,7 @@ np.random.seed(2019)
 
 
 def Gan(lr=0.001):
-    
+    opt = keras.optimizers.Adam(lr, beta_1=0.5, beta_2=0.9)
     D.compile(loss=[wasserstein_loss,'categorical_crossentropy'], optimizer=opt)
     GAN=keras.models.Model(inputs=G.input, outputs=D(G.output))
     opt = keras.optimizers.Adam(lr, beta_1=0.5, beta_2=0.9)

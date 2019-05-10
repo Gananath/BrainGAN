@@ -235,10 +235,10 @@ def Generator2D(lr=0.00001,latent_size=2,dropout=0.5):
     x= keras.layers.BatchNormalization(momentum=0.8)(x)
     x= keras.layers.Dropout(dropout)(x)
     x= keras.layers.UpSampling2D(size=(2, 2))(x)
-    x= keras.layers.Conv2D(1, kernel_size=(5, 5), padding='same',activation='sigmoid',data_format="channels_last")(x)
+    x= keras.layers.Conv2D(1, kernel_size=(5, 5), padding='same',activation='tanh',data_format="channels_last")(x)
     opt = keras.optimizers.Adam(lr, beta_1=0.5, beta_2=0.9)
     model=keras.models.Model([g_inputs, bin_switch], x)
-    model.compile(optimizer=opt, loss='binary_crossentropy', metrics=['accuracy'])
+    model.compile(optimizer=opt, loss='mse', metrics=['accuracy'])
     print("CONV2D")
     print ("input_shape"+ str(model.input_shape)+"\noutput_shape"+ str(model.output_shape))
     return model
